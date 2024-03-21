@@ -1,4 +1,4 @@
-#include "navigation_behaviors.h"
+#include "go_to_pose.h"
 #include "yaml-cpp/yaml.h"
 #include <string>
 
