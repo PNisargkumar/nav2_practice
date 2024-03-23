@@ -1,6 +1,8 @@
 #include "rclcpp/rclcpp.hpp"
 #include "behaviortree_cpp_v3/bt_factory.h"
 #include "go_to_pose.h"
+#include "compute_path.h"
+#include "follow_path_action.h"
 #include "ament_index_cpp/get_package_share_directory.hpp"
 
 #include <tf2/LinearMath/Quaternion.h>

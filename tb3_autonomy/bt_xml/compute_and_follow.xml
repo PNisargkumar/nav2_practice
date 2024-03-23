@@ -1,0 +1,15 @@
+<!-- Behavior tree that sequentially navigates locations naively -->
+<root main_tree_to_execute = "MainTree" >
+  <BehaviorTree ID="MainTree">
+    <Sequence name="sequence">
+      <ComputePath name="calculate_path_to_location1" loc="location1" planner="StraightPath" path="{path}"/>
+      <FollowPath name="follow_path_to_location1" path="{path}"/>
+      <ComputePath name="calculate_path_to_location2" loc="location2" planner="GridBased" path="{path}"/>
+      <FollowPath name="follow_path_to_location1" path="{path}"/>
+      <ComputePath name="calculate_path_to_location3" loc="location3" planner="GridBased" path="{path}"/>
+      <FollowPath name="follow_path_to_location1" path="{path}"/>
+      <ComputePath name="calculate_path_to_location4" loc="location4" planner="StraightPath" path="{path}"/>
+      <FollowPath name="follow_path_to_location1" path="{path}"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

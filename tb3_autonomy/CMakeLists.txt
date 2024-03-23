@@ -25,6 +25,8 @@ DESTINATION share/${PROJECT_NAME}
 # Install C++ behaviors
 set(BEHAVIOR_SOURCES
 src/go_to_pose.cpp 
+src/compute_path.cpp
+src/follow_path_action.cpp
 )
 
 set(TARGET_DEPENDS

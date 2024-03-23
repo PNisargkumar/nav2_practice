@@ -31,19 +31,41 @@ void AutonomyNode::create_behavior_tree()
 {
   BT::BehaviorTreeFactory factory;
 
-  // register bt node
+  // register GoToPose bt node
 
-  BT::NodeBuilder builder =
+  BT::NodeBuilder builder_go_to_pose =
       [=](const std::string &name, const BT::NodeConfiguration &config)
   {
     return std::make_unique<GoToPose>(name, config, shared_from_this());
   };
 
-  factory.registerBuilder<GoToPose>("GoToPose", builder);
+  factory.registerBuilder<GoToPose>("GoToPose", builder_go_to_pose);
+
+    // register ComputePath bt node
+
+  BT::NodeBuilder builder_compute_path =
+      [=](const std::string &name, const BT::NodeConfiguration &config)
+  {
+    return std::make_unique<ComputePath>(name, config, shared_from_this());
+  };
+
+  factory.registerBuilder<ComputePath>("ComputePath", builder_compute_path);
+
+    // register FollowPath bt node
+
+  BT::NodeBuilder builder_follow_path =
+      [=](const std::string &name, const BT::NodeConfiguration &config)
+  {
+    return std::make_unique<FollowPath>(name, config, shared_from_this());
+  };
+
+  factory.registerBuilder<FollowPath>("FollowPath", builder_follow_path);
+
+
 
   RCLCPP_INFO(get_logger(), bt_xml_dir.c_str());
 
-  tree_ = factory.createTreeFromFile(bt_xml_dir + "/tree.xml");
+  tree_ = factory.createTreeFromFile(bt_xml_dir + "/compute_and_follow.xml");
   RCLCPP_INFO(get_logger(), "3");
 }
 
